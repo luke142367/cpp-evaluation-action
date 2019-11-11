@@ -1,0 +1,9 @@
+name: 'CPP Evaluation'
+description: 'An action for evaluating C++ code'
+author: 'luke142367'
+branding:
+  color: blue
+  icon: cloud-lightning
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
