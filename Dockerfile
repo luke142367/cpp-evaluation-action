@@ -1,4 +1,4 @@
-FROM cppspark/evaluator:0.2.1
+FROM cppspark/evaluator:0.2.2
 
 WORKDIR /.cpp-evaluation-action
 
