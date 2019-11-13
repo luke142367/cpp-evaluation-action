@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/luke142367/cpp-evaluation-action/issues"
   },
-  "homepage": "https://github.com/luke142367/cpp-evaluation-action#readme"
+  "homepage": "https://github.com/luke142367/cpp-evaluation-action#readme",
+  "dependencies": {
+    "@octokit/rest": "^16.35.0"
+  }
 }
