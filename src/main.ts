@@ -36,6 +36,10 @@ async function run() {
     console.log(checkResult)
 
     await updateCheck(id, conclusion, checkResult)
+
+    if (conclusion === 'failure') {
+        process.exit(1)
+    }
 }
 
 run().catch(exitWithError);
