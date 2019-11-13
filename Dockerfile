@@ -6,6 +6,7 @@ RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
 RUN apt-get install -y nodejs
 
 COPY src src
+COPY @types @types
 COPY tsconfig.json package.json package-lock.json ./
 
 RUN npm install -g typescript
