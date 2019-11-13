@@ -1,0 +1,19 @@
+{
+  "name": "cpp-evaluation-action",
+  "version": "1.0.0",
+  "description": "C++ Spark Evaluation Action",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luke142367/cpp-evaluation-action.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luke142367/cpp-evaluation-action/issues"
+  },
+  "homepage": "https://github.com/luke142367/cpp-evaluation-action#readme"
+}
