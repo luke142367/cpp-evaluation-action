@@ -6,5 +6,5 @@ export interface ValidationError {
 }
 
 export interface ParsedSparkResult {
-    validationErrors: [ValidationError]
+    validationErrors: ValidationError[]
 }
