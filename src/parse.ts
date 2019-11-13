@@ -5,7 +5,6 @@ export { getAnnotations }
 
 function getAnnotations(output: string): ChecksUpdateParamsOutputAnnotations[] {
     const { validation } = JSON.parse(output)
-    console.log(validation)
 
     const annotations: ChecksUpdateParamsOutputAnnotations[] = []
 
@@ -17,7 +16,7 @@ function getAnnotations(output: string): ChecksUpdateParamsOutputAnnotations[] {
 
             annotations.push({
                 title: "Compilation Error",
-                message: info,
+                message: details,
                 path: file_path,
                 start_line: lineNumber,
                 end_line: lineNumber,

@@ -13,7 +13,8 @@ function exitWithError(err: any) {
 }
 
 async function run() {
-    //const id = await createCheck()
+    const id = await createCheck()
+
     const { err, stdout, stderr } = await exec(`python /app/src/main.py --json-only .`)
 
     if (err != null) {
@@ -21,7 +22,20 @@ async function run() {
     }
 
     const annotations = getAnnotations(stdout)
-    console.log(annotations)
+    const failures = annotations.filter(a => a.annotation_level === 'failure')
+    const conclusion = failures.length > 0 ? 'failure' : 'success'
+
+    const summary = `${annotations.length} issue(s) found`
+
+    const checkResult = {
+        title: "C++ Evaluator",
+        summary: summary,
+        annotations: annotations,
+    }
+
+    console.log(checkResult)
+
+    await updateCheck(id, conclusion, checkResult)
 }
 
 run().catch(exitWithError);
