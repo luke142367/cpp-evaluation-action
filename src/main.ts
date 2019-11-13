@@ -38,7 +38,7 @@ async function run() {
     await updateCheck(id, conclusion, checkResult)
 
     if (conclusion === 'failure') {
-        process.exit(1)
+        process.exit(78)
     }
 }
 
