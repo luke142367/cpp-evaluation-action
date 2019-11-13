@@ -1,26 +1,30 @@
-import { ParsedSparkResult, ValidationError } from '../@types/cpp-spark'
+import { Conclusion, AnnotationLevel } from '../@types/check'
+import { ChecksUpdateParamsOutputAnnotations } from '@octokit/rest'
 
-export { parseSparkOutput }
+export { getAnnotations }
 
-function parseSparkOutput(output: string): ParsedSparkResult {
+function getAnnotations(output: string): ChecksUpdateParamsOutputAnnotations[] {
     const { validation } = JSON.parse(output)
     console.log(validation)
 
-    const validationErrors: ValidationError[] = []
+    const annotations: ChecksUpdateParamsOutputAnnotations[] = []
+
     validation.runners.map((runner: any) => {
         runner.errors.map((error: any) => {
             const { info, file_path, details, line_number } = error
 
-            validationErrors.push({
-                info: info,
-                file_path: file_path,
-                details: details,
-                line_number: line_number
+            const lineNumber = parseInt(line_number, 10)
+
+            annotations.push({
+                title: "Compilation Error",
+                message: info,
+                path: file_path,
+                start_line: lineNumber,
+                end_line: lineNumber,
+                annotation_level: 'failure'
             })
         })
     })
 
-    return {
-        validationErrors: validationErrors
-    }
+    return annotations
 }

@@ -1,5 +1,6 @@
 import exec from './exec'
-import { parseSparkOutput } from './parse'
+import { getAnnotations } from './parse'
+import { createCheck, updateCheck } from './check'
 
 function exitWithError(err: any) {
     console.error('Error', err.stack)
@@ -12,14 +13,15 @@ function exitWithError(err: any) {
 }
 
 async function run() {
+    //const id = await createCheck()
     const { err, stdout, stderr } = await exec(`python /app/src/main.py --json-only .`)
 
     if (err != null) {
         exitWithError(err)
     }
 
-    const { validationErrors } = parseSparkOutput(stdout)
-    console.log(validationErrors)
+    const annotations = getAnnotations(stdout)
+    console.log(annotations)
 }
 
 run().catch(exitWithError);
