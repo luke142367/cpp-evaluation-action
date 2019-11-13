@@ -35,20 +35,18 @@ function getAnnotations(output: string): ChecksUpdateParamsOutputAnnotations[] {
         return annotations
     }
 
-    linter.runners.map((runner: any) => {
-        runner.errors.map((error: any) => {
-            const { info, file_path, line_number } = error
+    linter.errors.map((error: any) => {
+        const { info, file_path, line_number } = error
 
-            const lineNumber = parseInt(line_number, 10)
+        const lineNumber = parseInt(line_number, 10)
 
-            annotations.push({
-                title: "Linter Warning",
-                message: info,
-                path: file_path,
-                start_line: lineNumber,
-                end_line: lineNumber,
-                annotation_level: 'warning'
-            })
+        annotations.push({
+            title: "Linter Warning",
+            message: info,
+            path: file_path,
+            start_line: lineNumber,
+            end_line: lineNumber,
+            annotation_level: 'warning'
         })
     })
 
