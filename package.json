@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/luke142367/cpp-evaluation-action#readme",
   "dependencies": {
-    "@octokit/rest": "^16.35.0"
+    "@octokit/rest": "^19.0.13"
   }
 }
